@@ -103,6 +103,26 @@ namespace TTSfree.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TTS_icon {
+            get {
+                object obj = ResourceManager.GetObject("TTS_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon TTS_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("TTS_icon1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap txt_extension {
             get {
                 object obj = ResourceManager.GetObject("txt_extension", resourceCulture);

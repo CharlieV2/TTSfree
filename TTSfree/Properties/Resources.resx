@@ -130,6 +130,12 @@
   <data name="doc_extension" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doc_extension.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TTS_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TTS_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TTS_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TTS_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="txt_extension" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\txt_extension.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
