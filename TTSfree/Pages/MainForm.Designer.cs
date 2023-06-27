@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.DocumentsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.UploadPanel = new System.Windows.Forms.PictureBox();
             this.OutputPathEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BrowseButton = new System.Windows.Forms.Button();
@@ -42,9 +41,11 @@
             this.RateTrackBar = new System.Windows.Forms.TrackBar();
             this.VolumeLabel = new System.Windows.Forms.Label();
             this.RateLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.UploadPanel)).BeginInit();
+            this.label5 = new System.Windows.Forms.Label();
+            this.UploadPanel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RateTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UploadPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // DocumentsPanel
@@ -54,15 +55,6 @@
             this.DocumentsPanel.Name = "DocumentsPanel";
             this.DocumentsPanel.Size = new System.Drawing.Size(360, 281);
             this.DocumentsPanel.TabIndex = 1;
-            // 
-            // UploadPanel
-            // 
-            this.UploadPanel.Image = global::TTSfree.Properties.Resources.upload_panel;
-            this.UploadPanel.Location = new System.Drawing.Point(12, 12);
-            this.UploadPanel.Name = "UploadPanel";
-            this.UploadPanel.Size = new System.Drawing.Size(360, 55);
-            this.UploadPanel.TabIndex = 0;
-            this.UploadPanel.TabStop = false;
             // 
             // OutputPathEntry
             // 
@@ -94,6 +86,7 @@
             this.BrowseButton.TabStop = false;
             this.BrowseButton.Text = "Обзор...";
             this.BrowseButton.UseVisualStyleBackColor = true;
+            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
             // 
             // GetAudioButton
             // 
@@ -105,6 +98,7 @@
             this.GetAudioButton.TabStop = false;
             this.GetAudioButton.Text = "Озвучить";
             this.GetAudioButton.UseVisualStyleBackColor = true;
+            this.GetAudioButton.Click += new System.EventHandler(this.GetAudioButton_Click);
             // 
             // ExtensionComboBox
             // 
@@ -114,7 +108,7 @@
             this.ExtensionComboBox.Items.AddRange(new object[] {
             ".wav",
             ".mp3"});
-            this.ExtensionComboBox.Location = new System.Drawing.Point(486, 46);
+            this.ExtensionComboBox.Location = new System.Drawing.Point(508, 81);
             this.ExtensionComboBox.Name = "ExtensionComboBox";
             this.ExtensionComboBox.Size = new System.Drawing.Size(69, 25);
             this.ExtensionComboBox.TabIndex = 6;
@@ -124,7 +118,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 11F);
-            this.label2.Location = new System.Drawing.Point(390, 47);
+            this.label2.Location = new System.Drawing.Point(390, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 20);
             this.label2.TabIndex = 7;
@@ -132,7 +126,7 @@
             // 
             // VolumeTrackBar
             // 
-            this.VolumeTrackBar.Location = new System.Drawing.Point(473, 90);
+            this.VolumeTrackBar.Location = new System.Drawing.Point(473, 125);
             this.VolumeTrackBar.Maximum = 100;
             this.VolumeTrackBar.Name = "VolumeTrackBar";
             this.VolumeTrackBar.Size = new System.Drawing.Size(104, 45);
@@ -146,7 +140,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 11F);
-            this.label3.Location = new System.Drawing.Point(390, 90);
+            this.label3.Location = new System.Drawing.Point(390, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 9;
@@ -156,7 +150,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 11F);
-            this.label4.Location = new System.Drawing.Point(390, 141);
+            this.label4.Location = new System.Drawing.Point(390, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 11;
@@ -165,7 +159,7 @@
             // RateTrackBar
             // 
             this.RateTrackBar.LargeChange = 1;
-            this.RateTrackBar.Location = new System.Drawing.Point(473, 141);
+            this.RateTrackBar.Location = new System.Drawing.Point(473, 176);
             this.RateTrackBar.Minimum = -10;
             this.RateTrackBar.Name = "RateTrackBar";
             this.RateTrackBar.Size = new System.Drawing.Size(104, 45);
@@ -178,7 +172,7 @@
             // 
             this.VolumeLabel.AutoSize = true;
             this.VolumeLabel.Font = new System.Drawing.Font("Segoe UI Light", 11F);
-            this.VolumeLabel.Location = new System.Drawing.Point(577, 90);
+            this.VolumeLabel.Location = new System.Drawing.Point(577, 125);
             this.VolumeLabel.Name = "VolumeLabel";
             this.VolumeLabel.Size = new System.Drawing.Size(30, 20);
             this.VolumeLabel.TabIndex = 12;
@@ -188,17 +182,37 @@
             // 
             this.RateLabel.AutoSize = true;
             this.RateLabel.Font = new System.Drawing.Font("Segoe UI Light", 11F);
-            this.RateLabel.Location = new System.Drawing.Point(577, 141);
+            this.RateLabel.Location = new System.Drawing.Point(577, 176);
             this.RateLabel.Name = "RateLabel";
             this.RateLabel.Size = new System.Drawing.Size(17, 20);
             this.RateLabel.TabIndex = 13;
             this.RateLabel.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.label5.Location = new System.Drawing.Point(389, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 25);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Выходной файл";
+            // 
+            // UploadPanel
+            // 
+            this.UploadPanel.Image = global::TTSfree.Properties.Resources.upload_panel;
+            this.UploadPanel.Location = new System.Drawing.Point(12, 12);
+            this.UploadPanel.Name = "UploadPanel";
+            this.UploadPanel.Size = new System.Drawing.Size(360, 55);
+            this.UploadPanel.TabIndex = 0;
+            this.UploadPanel.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 415);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.RateLabel);
             this.Controls.Add(this.VolumeLabel);
             this.Controls.Add(this.label4);
@@ -217,10 +231,11 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TTSfree (Текст в речь)";
-            ((System.ComponentModel.ISupportInitialize)(this.UploadPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RateTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UploadPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,6 +257,7 @@
         private System.Windows.Forms.TrackBar RateTrackBar;
         private System.Windows.Forms.Label VolumeLabel;
         private System.Windows.Forms.Label RateLabel;
+        private System.Windows.Forms.Label label5;
     }
 }
 

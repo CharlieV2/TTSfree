@@ -60,9 +60,9 @@
             // 
             // FileIcon
             // 
-            this.FileIcon.Location = new System.Drawing.Point(3, 0);
+            this.FileIcon.Location = new System.Drawing.Point(3, 2);
             this.FileIcon.Name = "FileIcon";
-            this.FileIcon.Size = new System.Drawing.Size(36, 36);
+            this.FileIcon.Size = new System.Drawing.Size(32, 32);
             this.FileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.FileIcon.TabIndex = 0;
             this.FileIcon.TabStop = false;
@@ -71,12 +71,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.FileIcon);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.FileNameLabel);
             this.Name = "SelectedDocumentPanel";
-            this.Size = new System.Drawing.Size(327, 36);
+            this.Size = new System.Drawing.Size(329, 38);
             ((System.ComponentModel.ISupportInitialize)(this.CancelButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileIcon)).EndInit();
             this.ResumeLayout(false);

@@ -1,20 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TTSfree.CustomControls
 {
     public partial class SelectedDocumentPanel : UserControl
     {
+
+        public string DocumentName { get; set; }
+        public string DocumentPath { get; set; }
+        public string DocumentExtension { get; set; }
+
+        private Dictionary<string, System.Drawing.Image> ImageDictionary;
+
         public SelectedDocumentPanel()
         {
             InitializeComponent();
+        }
+
+        public SelectedDocumentPanel(string path)
+        {
+            InitializeComponent();
+            InitializeImageDictionary();
+
+            DocumentPath = path;
+            DocumentName = Path.GetFileNameWithoutExtension(path);
+            DocumentExtension = Path.GetExtension(path);
+
+            FillPanel();
+        }
+
+        private void InitializeImageDictionary()
+        {
+            ImageDictionary = new Dictionary<string, System.Drawing.Image>()
+            {
+                { ".docx", Properties.Resources.docx_extension },
+                { ".doc", Properties.Resources.doc_extension },
+                { ".txt", Properties.Resources.txt_extension }
+            };
+
+        }
+
+        private void FillPanel()
+        {
+            FileNameLabel.Text = DocumentName;
+
+            FileIcon.Image = ImageDictionary[DocumentExtension];            
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
