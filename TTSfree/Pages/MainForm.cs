@@ -1,6 +1,6 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using System;
+﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using TTSfree.CustomControls;
 using TTSfree.Utilities;
@@ -21,17 +21,6 @@ namespace TTSfree
             ExtensionComboBox.SelectedIndex = 0;
         }
 
-
-        private void GetText()
-        {
-            //WordprocessingDocument document = WordprocessingDocument.Open("C:\\Users\\newma\\Desktop\\123.docx", false);
-
-            string text = FileReader.ReadDocFile("C:\\Users\\newma\\Desktop\\123.doc");
-
-            
-        }
-
-
         private void GetAudioButton_Click(object sender, EventArgs e)
         {
             if (OutputPathEntry.Text == "" || OutputPathEntry.Text == "Рабочий стол")
@@ -41,9 +30,20 @@ namespace TTSfree
 
             if (Directory.Exists(OutputPathEntry.Text))
             {
-                TextToSpeech textToSpeech = new TextToSpeech(File.ReadAllText(Path.Combine(OutputPathEntry.Text, "123.txt")), Path.Combine(OutputPathEntry.Text, "name" + ExtensionComboBox.Text), Path.Combine(OutputPathEntry.Text, "nametmp" + ExtensionComboBox.Text), VolumeTrackBar.Value, RateTrackBar.Value);
+                string outputFilePath;
+                string tempFilePath;
+                string text;
 
-                textToSpeech.CreateAudioFile();
+                foreach (SelectedDocumentPanel documentPanel in DocumentsPanel.Controls)
+                {
+                    outputFilePath = Path.Combine(OutputPathEntry.Text, documentPanel.DocumentName + ExtensionComboBox.Text);
+                    tempFilePath = Path.Combine(OutputPathEntry.Text, documentPanel.DocumentName + "_temp" + ExtensionComboBox.Text);
+                    text = FileReader.GetText(documentPanel.DocumentPath);
+
+                    TextToSpeech textToSpeech = new TextToSpeech(text, outputFilePath, tempFilePath, VolumeTrackBar.Value, RateTrackBar.Value);
+
+                    Task.Run(() => textToSpeech.CreateAudioFile());
+                }
             }
             else
             {
@@ -99,6 +99,8 @@ namespace TTSfree
                 }
             }
         }
+
+
 
         private void BrowseButton_Click(object sender, EventArgs e)
         {

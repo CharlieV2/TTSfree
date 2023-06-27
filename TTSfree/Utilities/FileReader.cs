@@ -1,13 +1,37 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Office.Interop.Word;
+using System.IO;
 using System.Text;
 
 namespace TTSfree.Utilities
 {
     public static class FileReader
     {
-        public static string ReadDocxFile(WordprocessingDocument document)
+        public static string GetText(string filePath)
+        {
+            string text = "";
+
+            switch (Path.GetExtension(filePath))
+            {
+                case ".docx":
+                    WordprocessingDocument document = WordprocessingDocument.Open(filePath, false);
+                    text = FileReader.ReadDocxFile(document);
+                    break;
+
+                case ".doc":
+                    text = FileReader.ReadDocFile(filePath);
+                    break;
+
+                case ".txt":
+                    text = File.ReadAllText(filePath);
+                    break;
+            }
+
+            return text;
+        }
+
+        private static string ReadDocxFile(WordprocessingDocument document)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -34,7 +58,7 @@ namespace TTSfree.Utilities
             return sb.ToString();
         }
 
-        public static string ReadDocFile(string filePath)
+        private static string ReadDocFile(string filePath)
         {
             Application wordApp = new Application();
             Microsoft.Office.Interop.Word.Document document = wordApp.Documents.Open(filePath);

@@ -75,7 +75,7 @@
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.FileNameLabel);
             this.Name = "SelectedDocumentPanel";
-            this.Size = new System.Drawing.Size(329, 38);
+            this.Size = new System.Drawing.Size(325, 38);
             ((System.ComponentModel.ISupportInitialize)(this.CancelButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileIcon)).EndInit();
             this.ResumeLayout(false);

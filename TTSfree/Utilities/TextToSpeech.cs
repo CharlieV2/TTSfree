@@ -1,6 +1,5 @@
 ﻿using NAudio.Lame;
 using NAudio.Wave;
-using NAudio.MediaFoundation;
 using System;
 using System.IO;
 using System.Speech.Synthesis;
